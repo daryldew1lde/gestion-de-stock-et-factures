@@ -60,7 +60,7 @@ def createLigneFacture(request):
 
 # Your existing views
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'dashboard/customer_index.html')
 
 
 
