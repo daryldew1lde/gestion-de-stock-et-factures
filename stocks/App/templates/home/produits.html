@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            {% for produit in produits %}  
+                <div class="col-3">
+                    <div class="card" style="width:350px">
+                        <img src="{{ produit.image.url }}" alt="{{ produit.nom }} Image" style="height:250px">
+                        <div class="card-body">
+                        <h4 class="card-title">{{produit.nom}}</h4>
+                        <p class="card-text">{{produit.categorie}}.</p>
+                        <a href="{% url "details_produit" %}?id={{produit.id}}" class="btn btn-success">Voir Plus</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+            
+            {% endfor %}
+            
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

@@ -59,8 +59,69 @@ def createLigneFacture(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Your existing views
+
+def produits(request):
+    produits = Produit.objects.all()
+    return render(request, 'home/produits.html', {'produits':produits, 'segment':'liste2'})
+
+def qr_code(request):
+    produits = Produit.objects.all()
+    return render(request, 'home/qr_code.html', {'produits':produits, 'segment':'code'})
+
+def details_produit(request):
+    id  = request.GET.get('id', None)
+    produit = Produit.objects.get(id=id)
+    return render(request, 'home/details_produit.html', {'produit':produit})
+
+def modif_produit(request):
+    if request.method == 'POST':
+        pass
+    id  = request.GET.get('id', None)
+    produit = Produit.objects.get(id=id)
+    return render(request, 'home/modif_produit.html', {'produit':produit})
+
 def index(request):
-    return render(request, 'dashboard/customer_index.html')
+    if request.GET.get('idcat', None) == None:
+        produits = Produit.objects.all()
+    else:
+        idcat = request.GET.get('idcat')
+        categorie = Categorie.objects.get(id=idcat)
+        produits = categorie.produits.all()
+    return render(request, 'home/index.html', {'produits':produits, 'segment':'Liste'})
+
+
+
+def ajouter_produit(request):
+    if request.method == 'POST':
+        pass
+   
+    return render(request, 'home/ajouter_produit.html', {'segment':'ajout'})
+
+def home_register(request):
+    return render(request, 'home/register.html')
+
+
+def home_login(request):
+    return render(request, 'home/login.html')
+
+
+def logout(request):
+    return render(request, 'home/index.html')
+
+
+def icons(request):
+    return render(request, 'home/icons.html')
+
+def fact(request):
+    return render(request, 'home/fact.html', {'segment':'fact'})
+
+def cat(request):
+    categories = Categorie.objects.all()
+    return render(request, 'home/cat.html', {'segment':'cat', 'categories':categories})
+
+
+def user(request):
+    return render(request, 'home/user.html', {'segment':'user'})
 
 
 

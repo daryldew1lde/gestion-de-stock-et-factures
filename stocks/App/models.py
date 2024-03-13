@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.db.models import F
 from qrcode import QRCode, ERROR_CORRECT_L
 import qrcode
+from django.db.models import Count
 import os
 from io import BytesIO
 from django.core.files import File
@@ -28,6 +29,12 @@ class User(AbstractUser):
 class Categorie(models.Model):
     nom = models.CharField(max_length=100, verbose_name="name")
     description = models.TextField(verbose_name="description", blank=True)
+    
+    def get_produit_count(self):
+        """
+        This method retrieves the number of Produits associated with the current Categorie instance.
+        """
+        return self.produits.count()
     
     def __str__(self):
         return self.nom

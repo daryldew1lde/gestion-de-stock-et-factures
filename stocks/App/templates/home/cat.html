@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Maps {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card card-plain">
+          <div class="card-body">
+            <ul class="list-group">
+              {% for categorie in  categories %}
+                <div class="mb-4">
+                  <a href="{% url "index" %}?idcat={{categorie.id}}">
+                  <li class="list-group-item d-flex justify-content-between align-items-cente">
+                    {{categorie.nom}}
+                    <span class="badge badge-danger badge-pill">{{categorie.get_produit_count}}</span>
+                  </li>
+                </div>
+                </a>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initGoogleMaps();
+    });
+  </script>
+
+{% endblock javascripts %}
