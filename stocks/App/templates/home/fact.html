@@ -1,6 +1,8 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Notifications {% endblock %} 
+{% load static %}
+
+{% block title %} Factures {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -9,127 +11,106 @@
 
   <div class="content">
     <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Notifications Style</h4>
-          </div>
-          <div class="card-body">
-            <div class="alert alert-info">
-              <span>This is a plain notification</span>
-            </div>
-            <div class="alert alert-info">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span>This is a notification with close button.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-              <span data-notify="message">This is a notification with close button and icon.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-              <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Notification states</h4>
-          </div>
-          <div class="card-body">
-            <div class="alert alert-primary">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span><b> Primary - </b> This is a regular notification made with ".alert-primary"</span>
-            </div>
-            <div class="alert alert-info">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span><b> Info - </b> This is a regular notification made with ".alert-info"</span>
-            </div>
-            <div class="alert alert-success">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span><b> Success - </b> This is a regular notification made with ".alert-success"</span>
-            </div>
-            <div class="alert alert-warning">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span><b> Warning - </b> This is a regular notification made with ".alert-warning"</span>
-            </div>
-            <div class="alert alert-danger">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-              <span><b> Danger - </b> This is a regular notification made with ".alert-danger"</span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col-md-12">
-        <div class="card">
+        <div class="card ">
+          <div class="card-header">
+            <h2 class="card-title"> Factures</h2>
+          </div>
           <div class="card-body">
-            <div class="places-buttons">
-              <div class="row">
-                <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h4 class="card-title">
-                    Notifications Places
-                    <p class="category">Click to view notifications</p>
-                  </h4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-8 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','left')">Top Left</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','center')">Top Center</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','right')">Top Right</button>
-                    </div>
+            <form method="post">
+              {% csrf_token %}
+              <div class="row ml-2">
+                <strong class="mb-1">Trier par dates</strong>
+                <div class="form-group col-sm-12 col-md-12 col-xl-3">
+                <div class="d-flex align-items-center">
+                  <label class="form-label text-muted">de: </label>
+                  <div id="date2-datepicker" class="input-group date ml-2 p-2" data-date-format="dd-mm-yyyy">
+                  <span class="input-group-addon input-group-text bg-primary-transparent"><i class="fe fe-calendar text-primary-dark"></i></span>
+                  <input class="form-control task-end-date" type="date" name="startDate"  placeholder="Select End Date" />
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-8 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','left')">Bottom Left</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','center')">Bottom Center</button>
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-primary btn-block" onclick="demo.showNotification('bottom','right')">Bottom Right</button>
-                    </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-12 col-xl-3">
+                <div class="d-flex align-items-center">
+                  <label class="form-label text-muted">a: </label>
+                  <div id="date2-datepicker" class="input-group date ml-2 p-2 " data-date-format="dd-mm-yyyy">
+                  <span class="input-group-addon input-group-text bg-primary-transparent "><i class="fe fe-calendar text-primary-dark"></i></span>
+                  <input class="form-control task-end-date" type="date" name="endDate"  placeholder="Select End Date" />
                   </div>
                 </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-xl-3 p-2">
+                <button type="submit" class="btn btn-primary">
+                  Trier
+                </button>
+                </div>
               </div>
-            </div>
+              </form>
+            <div class="table-responsive export-table">
+              <table  id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom w-100" data-ordering="false">
+                <thead class="table-head">
+                  <tr>
+                    <th class="bg-transparent border-bottom-0" data-orderable="false">Numero facture</th>
+                    <th class="bg-transparent border-bottom-0" data-orderable="false">Date</th>
+                    <th class="bg-transparent border-bottom-0" data-orderable="false">Montant</th>
+                    <th class="bg-transparent border-bottom-0 no-btn">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body">
+                    {% for facture  in  factures %} 
+                  <tr>
+                    <td>{{ facture.id}}</td>
+                    <td>{{ facture.date|date:'d-m-Y'}}</td>
+                    <td>{{ facture.total}}</td>
+                   
+                    <td>
+                      <div class="d-flex align-items-stretch">
+                        
+                        {% autoescape off %}<a class="btn btn-sm btn-outline-primary border me-2 ml-4" href="{% url "details_fact" %}?id_fact={{facture.id}}">Details</a>{% endautoescape %}
+
+                        <a class="btn btn-sm btn-outline-secondary border me-2 del ml-4" href="{% url "supprfact" %}?id={{facture.id}}"> <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path></svg></a>
+                        <div class="dropdown-menu dropdown-menu-start"><a class="dropdown-item" href="#">Modifier</a> <a class="dropdown-item" href="#"> Info</a></div>
+                      </div>
+                    </td>
+                   
+                    
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              </div>
           </div>
         </div>
       </div>
+     
     </div>
   </div>
 
 {% endblock content %}
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+
+{% block javascripts %}
+
+<script src="{% static 'assets/js/apexcharts.js'%}"></script>  
+	<!-- MY JS --><script src="{% static 'js/script.js'%}"></script><!-- INTERNAL SELECT2 JS --> 
+	<script src="{% static 'assets/plugins/select2/select2.full.min.js'%}"></script>
+	 <!-- CHART-CIRCLE JS--> <script src="{% static 'assets/js/circle-progress.min.js'%}"></script> <!-- INTERNAL Data tables js--> 
+	 <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js'%}"></script> 
+	 <script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap5.js'%}"></script> 
+	 <script src="{% static 'assets/plugins/datatable/dataTables.responsive.min.js'%}"></script>
+	   <script src="{% static 'assets/js/index1.js'%}"></script> <!-- REPLY JS--> 
+	    <!-- THEMECOLORS JS --> 
+	   <script src="{% static 'assets/js/themeColors.js'%}"></script>
+	
+		<script src=" {% static 'assets/plugins/datatable/js/dataTables.buttons.min.js' %} "></script>
+		<script src=" {% static 'assets/plugins/datatable/js/buttons.bootstrap5.min.js' %} "></script>
+		<script src=" {% static 'assets/plugins/datatable/js/jszip.min.js' %} "></script>
+		<script src=" {% static 'assets/plugins/datatable/responsive.bootstrap5.min.js' %} "></script>
+		<script src=" {% static 'assets/js/table-data.js' %} "></script>
+
+		<!-- THEMECOLORS JS -->
+		<script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+{% endblock javascripts %}
+
+

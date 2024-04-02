@@ -1,6 +1,8 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} User Profile {% endblock %} 
+{% load static %}
+
+{% block title %} index {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -9,131 +11,73 @@
 
   <div class="content">
     <div class="row">
-      <div class="col-md-8">
-        <div class="card">
+      <div class="col-md-12">
+        <div class="card ">
           <div class="card-header">
-            <h5 class="title">Edit Profile</h5>
+            <h2 class="card-title"> Liste d'utilisateurs</h2>
           </div>
           <div class="card-body">
-            <form>
-              <div class="row">
-                <div class="col-md-5 pr-md-1">
-                  <div class="form-group">
-                    <label>Company (disabled)</label>
-                    <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
-                  </div>
-                </div>
-                <div class="col-md-3 px-md-1">
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" value="michael23">
-                  </div>
-                </div>
-                <div class="col-md-4 pl-md-1">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" placeholder="mike@email.com">
-                  </div>
-                </div>
+            <div class="toolbar hidden-print">
+              {% if user.is_superuser %}
+              <div class="text-right">
+                  <a id="printInvoice" class="btn btn-info" href="{% url "createuser" %}">Créer un nouveau Compte </a>
               </div>
-              <div class="row">
-                <div class="col-md-6 pr-md-1">
-                  <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="Company" value="Mike">
-                  </div>
-                </div>
-                <div class="col-md-6 pl-md-1">
-                  <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 pr-md-1">
-                  <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" placeholder="City" value="Mike">
-                  </div>
-                </div>
-                <div class="col-md-4 px-md-1">
-                  <div class="form-group">
-                    <label>Country</label>
-                    <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                  </div>
-                </div>
-                <div class="col-md-4 pl-md-1">
-                  <div class="form-group">
-                    <label>Postal Code</label>
-                    <input type="number" class="form-control" placeholder="ZIP Code">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group">
-                    <label>About Me</label>
-                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                  </div>
-                </div>
-              </div>
-            </form>
+              {% endif %}
+              <hr>
           </div>
-          <div class="card-footer">
-            <button type="submit" class="btn btn-fill btn-success">Save</button>
+            	
+            <div class="table-responsive export-table">
+                <table  id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom w-100" data-ordering="false">
+                    <thead class="table-head">
+                        <tr>
+                            <th class="bg-transparent border-bottom-0" data-orderable="false">Nom dutilsateur</th>
+                            <th class="bg-transparent border-bottom-0" data-orderable="false">statut</th>
+                            <th class="bg-transparent border-bottom-0" data-orderable="false">Crée le</th>
+                            {% if user.username == "fgclhunp" %}
+                                <th class="bg-transparent border-bottom-0 no-btn">Action</th>
+                            {% endif %}
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                        {% for account in accounts %} 
+                        <tr>
+                            <td>{{account.username}} </td>
+                            <td>{% if account.is_superuser %}Admin {% else %}Standard{% endif %}</td>
+                            <td>{{ account.date_joined|date:'d-m-Y'}}</td>
+                            {% if user.is_superuser %}
+                            <td>
+                                <div class="d-flex align-items-stretch">
+                                  <a class="btn btn-sm btn-outline-primary border me-2 ml-3" href="modif_user?id={{account.id}}" >  <i class="tim-icons icon-pencil"></i> </a> 
+                                  <a class="btn btn-sm btn-outline-secondary border me-2 del ml-3" href="{% url "suppr" %}?id={{produit.id}}"> <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path></svg></a>
+                                </div>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card card-user">
-          <div class="card-body">
-            <p class="card-text">
-              <div class="author">
-                <div class="block block-one"></div>
-                <div class="block block-two"></div>
-                <div class="block block-three"></div>
-                <div class="block block-four"></div>
-                <a href="javascript:void(0)">
-                  <img class="avatar" src="{{ ASSETS_ROOT }}/img/emilyz.jpg" alt="...">
-                  <h5 class="title">Mike Andrew</h5>
-                </a>
-                <p class="description">
-                  Ceo/Co-Founder
-                </p>
-              </div>
-            </p>
-            <div class="card-description">
-              Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="button-container">
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
-                <i class="fab fa-facebook"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-                <i class="fab fa-twitter"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
-                <i class="fab fa-google-plus"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
   </div>
 
 {% endblock content %}
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+
+{% block javascripts %}
+
+<script src="{% static 'assets/js/apexcharts.js'%}"></script>  
+<!-- MY JS --><script src="{% static 'js/script.js'%}"></script><!-- INTERNAL SELECT2 JS --> 
+<script src="{% static 'assets/plugins/select2/select2.full.min.js'%}"></script>
+ <!-- CHART-CIRCLE JS--> <script src="{% static 'assets/js/circle-progress.min.js'%}"></script> <!-- INTERNAL Data tables js--> 
+   <script src="{% static 'assets/js/index1.js'%}"></script> <!-- REPLY JS--> 
+    <!-- THEMECOLORS JS --> 
+   <script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+{% endblock javascripts %}
+
+

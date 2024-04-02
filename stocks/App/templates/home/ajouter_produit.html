@@ -16,13 +16,13 @@
               <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="categorie">Catégorie:</label>
-                  <select class="form-control" id="categorie" name="categorie">
-                    <option selected disabled>Choisir une catégorie</option>
-                    {% for category in categories %}
-                      <option value="{{ category.id }}">{{ category.nom }}</option>
+                    <label for="cat">Choisir ou Entrer un categorie:</label>
+                    <input type="text" id="cat" name="cat" list="myOptions" class="form-control">
+                    <datalist id="myOptions">
+                      {% for category in categories %}
+                      <option value="{{ category.nom }}">
                     {% endfor %}
-                  </select>
+                    </datalist>
                 </div>
 
                 <div class="form-group">
@@ -38,7 +38,7 @@
                 <div class="form-group">
                   <label for="prix_unitaire">Prix unitaire:</label>
                   <div class="input-group">
-                    <span class="input-group-text">&euro;</span>
+                    <span class="input-group-text">FCFA</span>
                     <input type="number" step="0.01" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Entrer le prix">
                   </div>
                 </div>
@@ -49,11 +49,13 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="image">Image:</label>
-                  <input type="file" class="form-control-file" id="image" name="image" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Soumettre le produit</button>
+                  <button  class="btn btn-danger">
+                      <label for="image">image</label>
+                      <input type="file" class="form-control-file" id="image" name="image" required>
+                   </button>
+              </div>
+1
+              <button type="submit" class="btn btn-success">Soumettre le produit</button>
               </form>
           </div>
         </div>
@@ -68,12 +70,7 @@
                 <div class="block block-three"></div>
                 <div class="block block-four"></div>
                 <a href="javascript:void(0)">
-                  <img class="avatar" src="{{ ASSETS_ROOT }}/img/emilyz.jpg" alt="...">
-                  <h5 class="title">Mike Andrew</h5>
-                </a>
-                <p class="description">
-                  Ceo/Co-Founder
-                </p>
+                  
               </div>
             </p>
             <div class="card-description">
@@ -81,17 +78,7 @@
             </div>
           </div>
           <div class="card-footer">
-            <div class="button-container">
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
-                <i class="fab fa-facebook"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-                <i class="fab fa-twitter"></i>
-              </button>
-              <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
-                <i class="fab fa-google-plus"></i>
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -16,44 +16,39 @@
             <ul class="nav">
                 <li class="{% if 'Liste' in segment %} active {% endif %} ">
                     <a href="{% url "index" %}">
-                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <i class="tim-icons icon-bullet-list-67"></i>
                         <p>Liste Produits</p>
                     </a>
                 </li>
                 <li class="{% if 'liste2' in segment %} active {% endif %} ">
                     <a href="{% url "produits" %}">
-                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <i class="tim-icons icon-bag-16"></i>
                         <p>Produits</p>
                     </a>
                 </li>
                 <li class="{% if 'cat' in segment %} active {% endif %}">
                     <a href="{% url "cat" %}">
-                        <i class="tim-icons icon-pin"></i>
+                        <i class="tim-icons icon-tag"></i>
                         <p>Categories</p>
                     </a>
                 </li>
                 <li class="{% if 'ajout' in segment %} active {% endif %}">
                     <a href="{% url "ajouter_produit" %}">
-                        <i class="tim-icons icon-pencil"></i>
+                        <i class="tim-icons icon-simple-add"></i>
                         <p>Ajouter un produit </p>
                     </a>
                 </li>
                 <li class="{% if 'fact' in segment %} active {% endif %}">
                     <a href="{% url "fact" %}">
-                        <i class="tim-icons icon-pin"></i>
+                        <i class="tim-icons icon-paper"></i>
                         <p>Factures</p>
                     </a>
                 </li>
-                <li class="{% if 'code' in segment %} active {% endif %}">
-                    <a href="{% url "qr_code" %}">
-                        <i class="tim-icons icon-single-02"></i>
-                        <p>Codes QR</p>
-                    </a>
-                </li>
+            
                 <li class="{% if 'user' in segment %} active {% endif %}">
                     <a href="{% url "user" %}">
                         <i class="tim-icons icon-single-02"></i>
-                        <p>Profil</p>
+                        <p>comptes d'utilisateur</p>
                     </a>
                 </li>
                 

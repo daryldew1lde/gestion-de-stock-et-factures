@@ -1,0 +1,78 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} User Profile {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Modifier</h5>
+          </div>
+          <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{account.id}}">
+              <div class="row">
+                <div class="col-md-3 px-md-1">
+                  <div class="form-group">
+                    <label>Nom d'utilisateur: </label>
+                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" value="{{account.username}}" name="nom">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 px-md-1">
+                  <div class="form-group">
+                    <label>Mot de passe: </label>
+                    <input type="password" class="form-control" placeholder="Mot de passe" name="pass1">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-md-1">
+                  <div class="form-group">
+                    <label>Confirmer Mot de passe: </label>
+                    <input type="password" class="form-control" placeholder="Confirmer Mot de passe" name="pass2">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-fill btn-success">Valider</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="card-body">
+            <p class="card-text">
+              <div class="author">
+                <div class="block block-one"></div>
+                <div class="block block-two"></div>
+                <div class="block block-three"></div>
+                <div class="block block-four"></div>
+                <a href="javascript:void(0)">
+                  
+              </div>
+            </p>
+            <div class="card-description">
+              Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </div>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
