@@ -49,7 +49,7 @@
                             <td>
                                 <div class="d-flex align-items-stretch">
                                   <a class="btn btn-sm btn-outline-primary border me-2 ml-3" href="modif_user?id={{account.id}}" >  <i class="tim-icons icon-pencil"></i> </a> 
-                                  <a class="btn btn-sm btn-outline-secondary border me-2 del ml-3" href="{% url "suppr" %}?id={{produit.id}}"> <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path></svg></a>
+                                  <a class="btn btn-sm btn-outline-secondary border me-2 del ml-3" href="{% url "suppruser" %}?id={{account.id}}"> <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path></svg></a>
                                 </div>
                             </td>
                             {% endif %}

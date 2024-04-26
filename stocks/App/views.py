@@ -190,6 +190,18 @@ def suppr_fact(request):
     fact.delete()
     return redirect('fact')
 
+
+
+def suppruser(request):
+    if not request.user.is_authenticated:
+         return redirect('home_login')
+    id  = request.GET.get('id', None)
+    us = User.objects.get(id=id)
+    us.delete()
+    return redirect('user')
+
+
+
 def suppr_cat(request):
     if not request.user.is_authenticated:
          return redirect('home_login')
