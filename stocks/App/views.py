@@ -109,7 +109,7 @@ def modif_produit(request):
         try:
             categorie = Categorie.objects.get(nom=categorie_nom)
         except:
-            categorie = Categorie.objects.create(nom=nom)
+            categorie = Categorie.objects.create(nom=categorie_nom)
             categorie.save()
         # Create and save the Produit instance
         produit = Produit.objects.get(id=id_produit)
