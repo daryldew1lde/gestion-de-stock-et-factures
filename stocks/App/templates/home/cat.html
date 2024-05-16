@@ -8,48 +8,47 @@
 
 {% block content %}
 
-  <div class="content">
-    <div class="row">
+<div class="content">
+  <div class="row">
       <div class="col-md-12">
-        <div class="card ">
-          <div class="card-header">
-            <h2 class="card-title"> Categories</h2>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive export-table">
-              <table  id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom w-100" data-ordering="false">
-                <thead class="table-head">
-                  <tr>
-                    <th class="bg-transparent border-bottom-0" data-orderable="false">Nom Categorie</th>
-                    <th class="bg-transparent border-bottom-0 no-btn">Action</th>
-                  </tr>
-                </thead>
-                <tbody class="table-body">
-                    {% for categorie in  categories %} 
-                  <tr>
-                    <td>{{ categorie.nom}}</td>
-
-                    <td>
-                      <div class="d-flex align-items-stretch">                        
-                        {% autoescape off %}<a class="btn btn-sm btn-outline-primary border me-2 ml-3"  href="{% url "index" %}?idcat={{categorie.id}}">Voir produits</a>{% endautoescape %}
-                        <a class="btn btn-sm btn-outline-secondary border me-2 del ml-3" href="{% url "suppr_cat" %}?id={{categorie.id}}"> <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path></svg></a>
-                      </div>
-                    </td>
-                   
-                    
-                  </tr>
-                  {% endfor %}
-
-                
-                </tbody>
-              </table>
+          <div class="card">
+              <div class="card-header">
+                  <h2 class="card-title">Categories</h2>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive export-table">
+                      <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom w-100" data-ordering="false">
+                          <thead class="table-head">
+                              <tr>
+                                  <th class="bg-transparent border-bottom-0" data-orderable="false">Nom Categorie</th>
+                                  <th class="bg-transparent border-bottom-0 no-btn">Action</th>
+                              </tr>
+                          </thead>
+                          <tbody class="table-body">
+                              {% for categorie in categories %}
+                                  <tr>
+                                      <td>{{ categorie.nom }}</td>
+                                      <td>
+                                          <div class="d-flex align-items-stretch">
+                                              <a class="btn btn-sm btn-success mr-2 ml-3" href="{% url 'index' %}?idcat={{ categorie.id }}">Voir produits</a>
+                                              <a class="btn btn-sm btn-danger  del ml-3" href="{% url 'suppr_cat' %}?id={{ categorie.id }}">
+                                                  <svg height="20" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                                                      <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"></path>
+                                                  </svg>
+                                              </a>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
               </div>
           </div>
-        </div>
       </div>
-     
-    </div>
   </div>
+</div>
 
 {% endblock content %}
 

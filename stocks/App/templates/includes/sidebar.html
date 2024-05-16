@@ -1,63 +1,57 @@
-
-    <div class="sidebar" data-color="blue">
-        <!--
-          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-      -->
-        <div class="sidebar-wrapper" data-color="blue">
-            <div class="logo">
-                <a href="javascript:void(0)" class="simple-text logo-mini">
-                    CM
-                </a>
-                <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Gestock
-                </a>
-            </div>
-            
-            <ul class="nav">
-                <li class="{% if 'Liste' in segment %} active {% endif %} ">
-                    <a href="{% url "index" %}">
-                        <i class="tim-icons icon-bullet-list-67"></i>
-                        <p>Liste Produits</p>
-                    </a>
-                </li>
-                <li class="{% if 'liste2' in segment %} active {% endif %} ">
-                    <a href="{% url "produits" %}">
-                        <i class="tim-icons icon-bag-16"></i>
-                        <p>Produits</p>
-                    </a>
-                </li>
-                <li class="{% if 'cat' in segment %} active {% endif %}">
-                    <a href="{% url "cat" %}">
-                        <i class="tim-icons icon-tag"></i>
-                        <p>Categories</p>
-                    </a>
-                </li>
-                <li class="{% if 'ajout' in segment %} active {% endif %}">
-                    <a href="{% url "ajouter_produit" %}">
-                        <i class="tim-icons icon-simple-add"></i>
-                        <p>Ajouter un produit </p>
-                    </a>
-                </li>
-                <li class="{% if 'fact' in segment %} active {% endif %}">
-                    <a href="{% url "fact" %}">
-                        <i class="tim-icons icon-paper"></i>
-                        <p>Factures</p>
-                    </a>
-                </li>
-            
-                <li class="{% if 'user' in segment %} active {% endif %}">
-                    <a href="{% url "user" %}">
-                        <i class="tim-icons icon-single-02"></i>
-                        <p>comptes d'utilisateur</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="{% url "home_login" %}">
-                        <i class="tim-icons icon-button-power"></i>
-                        <p>Logout</p>
-                    </a>
-                </li>
-            </ul>
+<div class="sidebar" data-color="blue">
+    <div class="sidebar-wrapper" data-color="blue">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+                CM
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+                Gestock
+            </a>
         </div>
+        
+        <ul class="nav">
+            <li class="{% if 'Liste' in segment %} active {% endif %}">
+                <a href="{% url 'index' %}">
+                    <i class="tim-icons icon-bullet-list-67"></i>
+                    <p>Liste Produits</p>
+                </a>
+            </li>
+            <li class="{% if 'liste2' in segment %} active {% endif %}">
+                <a href="{% url 'produits' %}">
+                    <i class="tim-icons icon-bag-16"></i>
+                    <p>Produits</p>
+                </a>
+            </li>
+            <li class="{% if 'cat' in segment %} active {% endif %}">
+                <a href="{% url 'cat' %}">
+                    <i class="tim-icons icon-tag"></i>
+                    <p>Categories</p>
+                </a>
+            </li>
+            <li class="{% if 'ajout' in segment %} active {% endif %}">
+                <a href="{% url 'ajouter_produit' %}">
+                    <i class="tim-icons icon-simple-add"></i>
+                    <p>Ajouter un produit</p>
+                </a>
+            </li>
+            <li class="{% if 'fact' in segment %} active {% endif %}">
+                <a href="{% url 'fact' %}">
+                    <i class="tim-icons icon-paper"></i>
+                    <p>Factures</p>
+                </a>
+            </li>
+            <li class="{% if 'user' in segment %} active {% endif %}">
+                <a href="{% url 'user' %}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>Comptes d'utilisateur</p>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'home_login' %}">
+                    <i class="tim-icons icon-button-power"></i>
+                    <p>Logout</p>
+                </a>
+            </li>
+        </ul>
     </div>
+</div>
