@@ -51,10 +51,13 @@
                           <input type="number" class="form-control" id="stock" name="stock" placeholder="Entrer la quantité en stock">
                       </div>
 
+
                       <div class="form-group">
-                          <label for="image">Image</label>
-                          <input type="file" class="form-control-file" id="image" name="image" required>
-                      </div>
+                        <button class="btn btn-danger">
+                            <label for="image">image</label>
+                            <input type="file" class="form-control-file" id="image" name="image" required>
+                         </button>
+                    </div>
 
                       <button type="submit" class="btn btn-success">Soumettre le produit</button>
                   </form>
@@ -73,7 +76,7 @@
                           <div class="block block-four"></div>
                           <a href="javascript:void(0)">
                               <img class="avatar border-gray" src="{% static 'assets/img/anime3.png' %}" alt="Profile Photo">
-                              <h5 class="title">Profile Name</h5>
+                              <h5 class="title">{{user.username}}</h5>
                           </a>
                       </div>
                   </p>

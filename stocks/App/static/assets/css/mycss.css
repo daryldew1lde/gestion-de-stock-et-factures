@@ -1,6 +1,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
+  font-size:20px;
   /*background-color: #f8f9fa;*/
 }
 
@@ -11,7 +12,7 @@ body {
 
 .invoice {
   position: relative;
-  background-color: #FFF;
+  background-color: #1c5e5bbe;
   min-height: 680px;
   padding: 15px
 }
@@ -50,7 +51,7 @@ body {
 
 .invoice .invoice-details .invoice-id {
   margin-top: 0;
-  color: #3989c6
+  color: #ffffff
 }
 
 .invoice main {
@@ -72,29 +73,36 @@ body {
   font-size: 1.2em
 }
 
-.invoice table {
+table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  
 }
 
 .invoice table td,.invoice table th {
   padding: 15px;
-  background: #eee;
+  background: #1d3a5c;
   border-bottom: 1px solid #fff
 }
 
-.invoice table th {
+table th {
   white-space: nowrap;
   font-weight: 400;
   font-size: 16px
 }
 
+table td, table th {
+  padding: 15px;
+  background: #4a5a7cab;
+  border-bottom: 1px solid #fff
+}
+
 .invoice table td h3 {
   margin: 0;
   font-weight: 400;
-  color: #3989c6;
+  color: #ffffff;
   font-size: 1.2em
 }
 
@@ -110,7 +118,7 @@ body {
 }
 
 .invoice table .unit {
-  background: #ddd
+  background: #3b3131
 }
 
 .invoice table .total {
@@ -129,7 +137,7 @@ body {
   text-align: right;
   padding: 10px 20px;
   font-size: 1.2em;
-  border-top: 1px solid #aaa
+  border-top: 1px solid #1a0202
 }
 
 .invoice table tfoot tr:first-child td {
@@ -137,7 +145,7 @@ body {
 }
 
 .invoice table tfoot tr:last-child td {
-  color: #3989c6;
+  color: #ffffff;
   font-size: 1.4em;
   border-top: 1px solid #3989c6
 }
@@ -149,7 +157,7 @@ body {
 .invoice footer {
   width: 100%;
   text-align: center;
-  color: #777;
+  color: #e6dddd;
   border-top: 1px solid #aaa;
   padding: 8px 0
 }
@@ -176,27 +184,28 @@ body {
   display: flex;
   align-items: center; /* Vertically align items */
   margin-bottom: 20px;
+  justify-content: space-around;
 }
 
-.product-details img {
-  max-width: 200px; /* Ensure images don't exceed a certain width */
+.prodimg {
+  margin-top: 6px;
+  width: 230px;
+  max-width: 260px; /* Ensure images don't exceed a certain width */
   height: auto; /* Preserve aspect ratio */
   margin-right: 20px;
+}
+.qr-code{
+  display: block;
+  width: 230px;
+  margin-top: 20px;
+  max-width: 150px;
 }
 
 .product-info {
   flex: 1;
 }
 
-
-
-.qr-code {
-  display: block;
-  margin-top: 20px;
-  max-width: 150px;
-}
-.product-info h2 {
-  font-size: 24px; /* Larger heading */
+.product-info h2 { /* Larger heading */
   margin-bottom: 10px;
   margin-top: 0;
 }

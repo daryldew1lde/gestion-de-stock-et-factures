@@ -31,7 +31,6 @@
                     <thead class="table-head">
                         <tr>
                             <th class="bg-transparent border-bottom-0" data-orderable="false">Nom dutilsateur</th>
-                            <th class="bg-transparent border-bottom-0" data-orderable="false">statut</th>
                             <th class="bg-transparent border-bottom-0" data-orderable="false">Crée le</th>
                             {% if user.username == "fgclhunp" %}
                                 <th class="bg-transparent border-bottom-0 no-btn">Action</th>
@@ -43,7 +42,6 @@
                         {% for account in accounts %} 
                         <tr>
                             <td>{{account.username}} </td>
-                            <td>{% if account.is_superuser %}Admin {% else %}Standard{% endif %}</td>
                             <td>{{ account.date_joined|date:'d-m-Y'}}</td>
                             {% if user.is_superuser %}
                             <td>

@@ -16,21 +16,21 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                        <h5 class="card-title">Infos du produit</h5>
+                        <h2 class="card-title">Infos du produit</h2>
                 </div>
 
                 <div class="card-body">
                     <div class="product-details">
-                        <img src="{{ produit.image.url }}" alt="Product Image">
+                        <img src="{{ produit.image.url }}" alt="Product Image" class="prodimg">
                         <div class="product-info">
                             <h2>{{ produit.nom }}</h2>
                             <p>{{ produit.description }}</p>
                             <p><strong>Prix Unitaire:</strong> {{ produit.prix_unitaire }} FCFA</p>
                             <p><strong>Stock:</strong> {{ produit.stock }}</p>
-                            {% if produit.qr_code %}
-                                <img src="{{ produit.qr_code.url }}" alt="QR Code" class="qr-code">
-                            {% endif %}
                         </div>
+                        {% if produit.qr_code %}
+                        <img src="{{ produit.qr_code.url }}" alt="QR Code" class="qr-code">
+                    {% endif %}
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <div class="block block-four"></div>
                         <a href="javascript:void(0)">
                             <img class="avatar border-gray" src="{% static 'assets/img/anime3.png' %}" alt="...">
-                            <h5 class="title">Username</h5>
+                            <h5 class="title">{{user.username}}</h5>
                         </a>
                     </div>
                     <p class="card-description">
