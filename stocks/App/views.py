@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login , logout, authenticate
 from datetime import datetime
 from .serializers import *
+from django.db.models import Sum
 
 
 @api_view(['GET'])
@@ -67,7 +68,40 @@ def createLigneFacture(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+def chart(request):
+    if not request.user.is_authenticated:
+         return redirect('home_login')
+    return render(request, 'home/chart.html', {'segment':'chart'})
+
 # Your existing views
+def ventes(request):
+    if not request.user.is_authenticated:
+         return redirect('home_login')
+    
+    # Retrieve the most recent month with records in the database
+    last_month = Facture.objects.latest('date').date.month
+    data = Facture.objects.filter(date__month=last_month)
+
+    # Annotate the queryset to group by day and sum the montants for each day
+    aggregated_data = data.values('date__day').annotate(total_montant=Sum('ligne_facture__total'))
+
+    # Prepare the response lists
+    jours = []
+    montants = []
+
+    for entry in aggregated_data:
+        jours.append(entry['date__day'])
+        montants.append(entry['total_montant'])
+
+    # Prepare the response dictionary
+    resp = {
+        'jours': jours,
+        'montants': montants
+    }
+    
+    return JsonResponse(resp, safe=False)
+        
 
 def produits(request):
     if not request.user.is_authenticated:

@@ -4,10 +4,12 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('getProductData', views.getProductData, name='getProductData'),
+    path('ventes', views.ventes, name='ventes'),
+    path('chart', views.chart, name='chart'),
     path('createFacture', views.createFacture, name='createFacture'),
     path('createLigneFacture', views.createLigneFacture, name='createLigneFacture'),
     path('home_register', views.home_register, name='home_register'),
-    path('home_login', views.home_login, name='home_login'),
+    path('home_login', views.home_login, name='home_login'), 
     path('logout', views.logout_view, name='logout'),
     path('icons/', views.icons, name='icons'),
     path('suppruser', views.suppruser, name='suppruser'),

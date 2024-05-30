@@ -2,7 +2,10 @@
 body {
   font-family: 'Arial', sans-serif;
   font-size:20px;
-  /*background-color: #f8f9fa;*/
+  /*background-color:lightblue ;*/
+}
+canvas{
+  background-color: rgb(179, 218, 210);
 }
 
 

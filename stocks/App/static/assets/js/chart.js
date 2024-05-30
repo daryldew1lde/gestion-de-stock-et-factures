@@ -1,85 +1,31 @@
-fetch('/chartdata') // Replace with the actual URL of your chartdata endpoint
+fetch('/ventes') // Replace with the actual URL of your chartdata endpoint
   .then(response => response.json())
   .then(data => {
     // Print the JSON response to the console
     console.log(data);
+	const xValues = data.jours;
+	const yValues = data.montants;
 
     // Extract the days and hours from the response data
     const days = Object.keys(data);
     const hours = data[days[0]].hours;
-	const colors = [
-		'#FF8C66',
-		'#66FFB7',
-		'#FFD966',
-		'#D966FF',
-		'#A0FF8C',
-		'#FFB766',
-		'#66D9FF',
-		'#6699FF',
-		'#8C66FF',
-		'#B766FF',
-		'#66FFE5',
-		'#FFED66',
-		
-	  ];
     // Create the chart using Chart.js
     const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: days, // Change to days on the x-axis
-        datasets: hours.map((hour, index) => ({
-          label: `${hour}h`,
-          data: days.map(day => data[day].scans[data[day].hours.indexOf(hour)]), // Change to data[day].scans
-          backgroundColor: colors[index % colors.length], // Generate a random background color for each hour
-         // Generate a random border color for each hour
-        }))
-      },
-      options: {
-        scales: {
-          x: {
-            beginAtZero: true,
-            reverse: false, // Set reverse to false to display days in ascending order
-            title: {
-              display: true,
-              text: 'Jours' // Label the x-axis as 'Days'
-            }
-          },
-          y: {
-
-            beginAtZero: true,
-            precision: 0,
-            title: {
-              display: true,
-              text: 'Scans' // Label the y-axis as 'Scans'
-            },
-            ticks: {
-              stepSize: 1 // Adjust the step size of y-axis ticks as needed
-            }
-          }
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                const datasetLabel = context.dataset.label || '';
-                const dataPoint = context.parsed.y || 0;
-                return datasetLabel + ': ' + dataPoint + ' scans'; // Customize the tooltip label as desired
-              }
-            }
-          }
-        }
-      }
-    });
+    const myChart = new Chart("myChart", {
+		type: "line",
+		data: {
+		  labels: xValues,
+		  datasets: [{
+			backgroundColor:"rgba(0,0,255,1.0)",
+			borderColor: "rgba(0,0,255,0.2)",
+			data: yValues
+		  }]
+		},
+	  });
   })
   .catch(error => {
     console.error('Error:', error);
   });
-
-function getRandomColor() {
-  // Generate a random color in hexadecimal format
-  return '#' + Math.floor(Math.random() * 16777215).toString(16);
-}
 
 
 $(function () {

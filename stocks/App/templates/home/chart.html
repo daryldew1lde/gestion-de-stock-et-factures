@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block title %} index {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Statistique des Ventes du mois</h1>
+        </div>
+        <div class="ms-auto pageheader-btn">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Statistiques jours(x)  et montant vendus(y)</a></li>
+
+            </ol>
+        </div>
+    </div>
+    <!-- PAGE-HEADER END -->
+    <canvas id="myChart"></canvas>
+
+  </div>
+
+{% endblock content %}
+
+
+{% block javascripts %}
+
+<!-- CHARTJS JS -->
+<script src=" {% static 'assets/plugins/chart/Chart.bundle.js' %} "></script>
+<script src=" {% static 'assets/plugins/chart/utils.js' %} "></script>
+<script src=" {% static 'assets/js/chart.js' %} "></script>
+
+<!-- THEMECOLORS JS -->
+<script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+{% endblock javascripts %}
+
+

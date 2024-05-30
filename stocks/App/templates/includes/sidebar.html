@@ -40,6 +40,12 @@
                     <p>Factures</p>
                 </a>
             </li>
+            <li class="{% if 'chart' in segment %} active {% endif %}">
+                <a href="{% url 'chart' %}">
+                    <i class="tim-icons icon-chart-bar-32"></i>
+                    <p>Stats Ventes</p>
+                </a>
+            </li>
             <li class="{% if 'user' in segment %} active {% endif %}">
                 <a href="{% url 'user' %}">
                     <i class="tim-icons icon-single-02"></i>
