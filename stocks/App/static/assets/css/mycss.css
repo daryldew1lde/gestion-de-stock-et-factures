@@ -4,6 +4,11 @@ body {
   font-size:20px;
   /*background-color:lightblue ;*/
 }
+
+#logo{
+  height: 85px;
+  width: 100px;
+}
 canvas{
   background-color: rgb(179, 218, 210);
 }

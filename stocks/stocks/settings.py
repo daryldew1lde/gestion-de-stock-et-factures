@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-q81-nzoraid%jnzu=bl^0!0f6tvcm)!4zu=8*t^u6#@!^zj0r*
 DEBUG = True
 
 
+CSRF_TRUSTED_ORIGINS = ['https://stock-awwe.onrender.com']
 
 
 ALLOWED_HOSTS = ['*']
@@ -35,7 +36,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allow requests from all origins (not recommende
 # Or you can specify specific origins:
 # Optional: If you need to allow specific methods or headers
 CORS_ALLOW_METHODS = ['GET', 'POST']  # Add other methods if needed
-CORS_ALLOW_HEADERS = ['']  # Allow all headers (can be restricted to specific ones)
+CORS_ALLOW_HEADERS = ['*']  # Allow all headers (can be restricted to specific ones)
 
 
 
@@ -132,6 +133,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'App/static'),
+]
 # settings.py
 MEDIA_URL = '/media/'
 
