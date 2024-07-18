@@ -1,5 +1,0 @@
-gunicorn
-django
-djangorestframework
-qrcode
-Pillow
